@@ -7,6 +7,8 @@
 size = Vector2(16, 16)
 
 [node name="Player" type="CharacterBody2D"]
+floor_constant_speed = true
+floor_snap_length = 2.0
 script = ExtResource("1_s6v8s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

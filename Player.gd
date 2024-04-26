@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-
 const SPEED = 100.0
 const JUMP_VELOCITY = -150.0
+const ACCELERATION = 600;
+const FRICTION = 1200;
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 500
-
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -21,8 +21,8 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = move_toward(velocity.x, direction * SPEED, ACCELERATION * delta)
 	else:
-		velocity.x = move_toward(velocity.x, 0, 1200 * delta)
+		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
 
 	move_and_slide()
