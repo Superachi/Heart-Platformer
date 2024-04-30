@@ -19,7 +19,7 @@ func _physics_process(delta):
 		coyote_jump_timer.start()
 	
 	if Input.is_key_pressed(KEY_ESCAPE):
-		movement_data = load("res://SlowMovementData.tres")
+		movement_data = load("res://custom_resources/player_movement_data/FastMovementData.tres")
 	
 func apply_gravity(delta):
 	if !is_on_floor():
@@ -32,15 +32,25 @@ func allow_jumping():
 	if !is_on_floor():
 		if Input.is_action_just_released("ui_accept") && velocity.y < movement_data.jump_velocity * movement_data.jump_release_modifier:
 			velocity.y *= movement_data.jump_release_modifier
-				
+
+#region Horizontal movement
 func set_horizontal_speed(input_axis, delta):
-	# Speed up
-	if input_axis:
+	handle_acceleration(input_axis, delta)
+	handle_friction(input_axis, delta)
+	apply_air_resistance(input_axis, delta)
+
+func apply_air_resistance(input_axis, delta):
+	if input_axis == 0 && !is_on_floor():
+		velocity.x = move_toward(velocity.x, 0, movement_data.air_resistance * delta)
+
+func handle_acceleration(input_axis, delta):
+	if input_axis != 0:
 		velocity.x = move_toward(velocity.x, input_axis * movement_data.speed, movement_data.acceleration * delta)
-	# Slow down
-	else:
+func handle_friction(input_axis, delta):
+	if input_axis == 0 && is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, movement_data.acceleration * delta)
-		
+#endregion
+
 func update_animations(input_axis):
 	if input_axis != 0:
 		animated_sprite_2d.flip_h = (input_axis < 0)

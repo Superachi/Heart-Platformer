@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PlayerMovementData" load_steps=2 format=3 uid="uid://b8yj0q728pq47"]
 
-[ext_resource type="Script" path="res://PlayerMovementData.gd" id="1_tr3e1"]
+[ext_resource type="Script" path="res://custom_resources/player_movement_data/PlayerMovementData.gd" id="1_tr3e1"]
 
 [resource]
 script = ExtResource("1_tr3e1")
@@ -10,3 +10,4 @@ jump_release_modifier = 0.6
 acceleration = 600
 friction = 1200
 gravity = 500
+gravity_scale = 1.0

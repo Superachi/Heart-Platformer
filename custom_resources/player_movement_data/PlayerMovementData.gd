@@ -8,3 +8,4 @@ extends Resource
 @export var friction = 1200
 @export var gravity = 500
 @export var gravity_scale : float = 1
+@export var air_resistance = 1
