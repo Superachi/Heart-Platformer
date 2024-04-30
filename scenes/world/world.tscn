@@ -2,10 +2,18 @@
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_q5o4c"]
 [ext_resource type="PackedScene" uid="uid://da1eh54dyt85x" path="res://scenes/player/Player.tscn" id="2_3tnpb"]
-[ext_resource type="Resource" uid="uid://b8yj0q728pq47" path="res://custom_resources/player_movement_data/DefaultMovementData.tres" id="3_bh67e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aho05"]
+size = Vector2(16, 96)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_q5o4c")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(72, 48)
+shape = SubResource("RectangleShape2D_aho05")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -16,4 +24,3 @@ polygon = PackedVector2Array(0, 0, 32, 0, 32, 152, 64, 152, 64, 168, 80, 168, 12
 
 [node name="Player" parent="." instance=ExtResource("2_3tnpb")]
 position = Vector2(48, 120)
-movement_data = ExtResource("3_bh67e")
