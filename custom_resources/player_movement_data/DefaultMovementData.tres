@@ -4,12 +4,12 @@
 
 [resource]
 script = ExtResource("1_tr3e1")
-speed = 100.0
+speed = 120.0
 jump_velocity = -200.0
 jump_release_modifier = 0.6
-acceleration = 600
+acceleration = 800
 friction = 1200
 gravity = 500
 gravity_scale = 1.0
-air_resistance = 100.0
+air_resistance = 150.0
 air_acceleration = 300.0

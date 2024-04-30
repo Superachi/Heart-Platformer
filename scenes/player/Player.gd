@@ -80,7 +80,7 @@ func handle_air_acceleration(input_axis, delta):
 
 func handle_friction(input_axis, delta):
 	if input_axis == 0 && is_on_floor():
-		velocity.x = move_toward(velocity.x, 0, movement_data.acceleration * delta)
+		velocity.x = move_toward(velocity.x, 0, movement_data.friction * delta)
 #endregion
 
 func update_animations(input_axis):
