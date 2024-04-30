@@ -36,16 +36,22 @@ func allow_jumping():
 #region Horizontal movement
 func set_horizontal_speed(input_axis, delta):
 	handle_acceleration(input_axis, delta)
-	handle_friction(input_axis, delta)
+	handle_air_acceleration(input_axis, delta)
 	apply_air_resistance(input_axis, delta)
+	handle_friction(input_axis, delta)
 
 func apply_air_resistance(input_axis, delta):
-	if input_axis == 0 && !is_on_floor():
+	if !is_on_floor() && input_axis == 0:
 		velocity.x = move_toward(velocity.x, 0, movement_data.air_resistance * delta)
 
 func handle_acceleration(input_axis, delta):
-	if input_axis != 0:
+	if is_on_floor() && input_axis != 0:
 		velocity.x = move_toward(velocity.x, input_axis * movement_data.speed, movement_data.acceleration * delta)
+
+func handle_air_acceleration(input_axis, delta):
+	if !is_on_floor() && input_axis != 0:
+		velocity.x = move_toward(velocity.x, input_axis * movement_data.speed, movement_data.air_acceleration * delta)
+
 func handle_friction(input_axis, delta):
 	if input_axis == 0 && is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, movement_data.acceleration * delta)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/player/Player.gd" id="1_s6v8s"]
 [ext_resource type="Texture2D" uid="uid://d36xqpiy7fwts" path="res://assets/player.png" id="2_8mgct"]
-[ext_resource type="Resource" uid="uid://b83de824uutrh" path="res://custom_resources/player_movement_data/FastMovementData.tres" id="2_c6ys5"]
+[ext_resource type="Resource" uid="uid://b8yj0q728pq47" path="res://custom_resources/player_movement_data/DefaultMovementData.tres" id="2_sotgb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2gq4o"]
 size = Vector2(12, 16)
@@ -85,7 +85,7 @@ animations = [{
 floor_constant_speed = true
 floor_snap_length = 4.0
 script = ExtResource("1_s6v8s")
-movement_data = ExtResource("2_c6ys5")
+movement_data = ExtResource("2_sotgb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)

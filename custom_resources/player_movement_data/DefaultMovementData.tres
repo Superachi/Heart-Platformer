@@ -11,3 +11,5 @@ acceleration = 600
 friction = 1200
 gravity = 500
 gravity_scale = 1.0
+air_resistance = 100.0
+air_acceleration = 300.0
