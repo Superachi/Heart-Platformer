@@ -49,7 +49,7 @@ func allow_jumping(input_axis):
 
 func allow_wall_jumping(input_axis : float) -> bool:
 	var just_jumped = false
-	if !is_on_wall() || is_on_floor(): return just_jumped
+	if !is_on_wall_only(): return just_jumped
 	
 	var wall_normal = get_wall_normal()
 	if Input.is_action_just_pressed("ui_accept"):
