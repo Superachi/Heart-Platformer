@@ -3,6 +3,11 @@ extends CharacterBody2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var coyote_jump_timer = $CoyoteJumpTimer
 
+# The starting_position needs to be defined with @onready
+# This is because otherwise, we'd try to access the global_position
+# before the node is initialized
+# https://youtu.be/4nlyb2DZzUo?si=suhIvyPmAzdDT2Jp&t=1365
+@onready var starting_position = global_position
 @export var movement_data : PlayerMovementData
 var air_jump = false
 
@@ -99,4 +104,4 @@ func update_animations(input_axis):
 		animated_sprite_2d.play("jump")
 
 func _on_hazard_detector_area_entered(area):
-	queue_free()
+	global_position = starting_position
