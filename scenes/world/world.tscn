@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://wkgd1y3xxxvl"]
+[gd_scene load_steps=5 format=3 uid="uid://wkgd1y3xxxvl"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_q5o4c"]
 [ext_resource type="PackedScene" uid="uid://da1eh54dyt85x" path="res://scenes/player/Player.tscn" id="2_3tnpb"]
+[ext_resource type="PackedScene" uid="uid://ca6p06kfvgt01" path="res://scenes/spikes/spikes.tscn" id="3_iufsn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aho05"]
 size = Vector2(16, 96)
@@ -10,12 +11,14 @@ size = Vector2(16, 96)
 script = ExtResource("1_q5o4c")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(72, 48)
 shape = SubResource("RectangleShape2D_aho05")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 152, 64, 152, 64, 168, 80, 168, 128, 152, 168, 152, 192, 128, 208, 128, 208, 168, 248, 168, 248, 152, 264, 144, 264, 136, 280, 136, 280, 104, 296, 104, 296, 0, 320, 0, 320, 184, 0, 184)
@@ -24,3 +27,15 @@ polygon = PackedVector2Array(0, 0, 32, 0, 32, 152, 64, 152, 64, 168, 80, 168, 12
 
 [node name="Player" parent="." instance=ExtResource("2_3tnpb")]
 position = Vector2(48, 120)
+
+[node name="Spikes" parent="." instance=ExtResource("3_iufsn")]
+position = Vector2(64, 168)
+
+[node name="Spikes2" parent="." instance=ExtResource("3_iufsn")]
+position = Vector2(208, 168)
+
+[node name="Spikes3" parent="." instance=ExtResource("3_iufsn")]
+position = Vector2(224, 168)
+
+[node name="Spikes4" parent="." instance=ExtResource("3_iufsn")]
+position = Vector2(232, 168)

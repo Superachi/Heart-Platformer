@@ -39,7 +39,7 @@ func allow_jumping(input_axis):
 	# Double jump (only activates after coyote time has stopped)
 	if !is_on_floor() && coyote_jump_timer.is_stopped() && !just_wall_jumped:
 		if Input.is_action_just_pressed("ui_accept") and air_jump:
-				velocity.y = movement_data.jump_velocity * 0.8
+				velocity.y = movement_data.jump_velocity * 0.7
 				air_jump = false
 	
 	# Decrease jump height on key release
@@ -97,3 +97,6 @@ func update_animations(input_axis):
 		
 	if !is_on_floor():
 		animated_sprite_2d.play("jump")
+
+func _on_hazard_detector_area_entered(area):
+	queue_free()
